@@ -9,8 +9,9 @@ public class Monster : MonoBehaviour
     GameObject player;
     public int distance;
     [SerializeField] int detectDist;
-    [SerializeField] int attackDist;
+    [SerializeField] float attackDist;
     [SerializeField] NavMeshAgent nvAgent;
+    public LayerMask playerLayerMask;
     
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,14 @@ public class Monster : MonoBehaviour
     IEnumerator Attack()
     {
         GetComponent<Animator>().SetBool("Attack", true);
-       
+        Ray ray = new Ray(transform.position, Vector3.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position,Vector3.forward,out hit, attackDist) && hit.collider.gameObject.tag == "Player")
+        {
+            service.GetComponent<GameManager>().GameOver();
+        }
+        
+
         yield return new WaitForSeconds(0.2f);
         GetComponent<Animator>().SetBool("Attack", false);
 
