@@ -8,15 +8,15 @@ public class SightUpDown : MonoBehaviour
     void Update()
     {
         float MouseY = Input.GetAxis("Mouse Y");
-
-        if (-90 < transform.rotation.x && transform.rotation.x < 60)
+        print(transform.rotation);
+        if (0.3f >= transform.rotation.x && transform.rotation.x >= -0.5f)
         {
             transform.Rotate(new Vector3(-1, 0, 0) * rotSpeed * MouseY);
         }
-        else if (transform.rotation.y < -90)
-            transform.Rotate(new Vector3(-89, 0, 0));
-        else if (transform.rotation.y > 60)
-            transform.Rotate(new Vector3(59, 0, 0));
+        else if (transform.rotation.x < -0.5f)
+            transform.Rotate(new Vector3(-0.5f, 0, 0));
+        else if (transform.rotation.x > 0.3f)
+            transform.Rotate(new Vector3(0.3f, 0, 0));
 
     }
 }
