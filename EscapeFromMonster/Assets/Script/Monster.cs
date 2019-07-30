@@ -12,10 +12,12 @@ public class Monster : MonoBehaviour
     [SerializeField] float attackDist;
     [SerializeField] NavMeshAgent nvAgent;
     public LayerMask playerLayerMask;
+    int rand;
     
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(Roam());
         player = service.GetComponent<GameManager>().player;
         nvAgent = GetComponent<NavMeshAgent>();
     }
@@ -43,6 +45,10 @@ public class Monster : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("Run", false);
             nvAgent.destination = transform.position;
+            if (rand == 0)
+                GetComponent<Animator>().SetBool("Walk", true);
+            else if (rand == 1)
+                GetComponent<Animator>().SetBool("Walk", false);
         }
         
        
@@ -65,5 +71,13 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GetComponent<Animator>().SetBool("Attack", false);
 
+    }
+    IEnumerator Roam()
+    {
+        while (true)
+        {
+            int rand = Random.Range(0,1);
+            yield return new WaitForSeconds(2);
+        }
     }
 }

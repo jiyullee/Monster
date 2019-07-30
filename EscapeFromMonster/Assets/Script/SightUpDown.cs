@@ -7,16 +7,17 @@ public class SightUpDown : MonoBehaviour
     int rotSpeed = 10;
     void Update()
     {
-        //float MouseY = Input.GetAxis("Mouse Y");
-        //print(transform.rotation);
-        //if (0.3f >= transform.rotation.x && transform.rotation.x >= -0.5f)
-        //{
-        //    transform.Rotate(new Vector3(-1, 0, 0) * rotSpeed * MouseY);
-        //}
-        //else if (transform.rotation.x < -0.5f)
-        //    transform.rotation= Quaternion.Euler(-0.5f, 0, 0);
-        //else if (transform.rotation.x > 0.3f)
-        //    transform.rotation = Quaternion.Euler(0.3f, 0, 0);
+       
+        float MouseY = Input.GetAxis("Mouse Y");
+        if (0.3f >= transform.localRotation.x && transform.localRotation.x >= -0.5f)
+        {
+            transform.Rotate(new Vector3(-1, 0, 0) * rotSpeed * MouseY);
+        }
+        else if (transform.localRotation.x < -0.5f && MouseY < 0)
+            transform.Rotate(new Vector3(-1, 0, 0) * rotSpeed * MouseY);
+        else if (transform.localRotation.x > 0.3f && MouseY > 0)
+            transform.Rotate(new Vector3(-1, 0, 0) * rotSpeed * MouseY);
+
 
     }
 }

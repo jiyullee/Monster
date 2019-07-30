@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] int sideSpeed = 4;
     [SerializeField] int backSpeed = 3;
     bool isBurnOut = false;
+    bool isFlashOn = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,19 @@ public class PlayerMove : MonoBehaviour
             isBurnOut = true;
             StartCoroutine(Burnout());
         }
-
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (isFlashOn == true)
+            {
+                isFlashOn = false;
+                GetComponentInChildren<Light>().enabled = false;
+            }
+            else if (isFlashOn == false)
+            {
+                isFlashOn = true;
+                GetComponentInChildren<Light>().enabled = true;
+            }
+        }
     }
     IEnumerator Burnout()
     {
