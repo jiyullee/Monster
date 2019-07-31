@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        Debug.Log(" timer   :" + time + "seconds");
+    //    Debug.Log(" timer   :" + time + "seconds");
     }
     public void GameOver()
     {

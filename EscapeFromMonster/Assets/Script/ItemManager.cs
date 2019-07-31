@@ -6,6 +6,7 @@ abstract public class ItemManager : MonoBehaviour
 {
 
     public Sprite itemImage;
+    public int itemNo;
     abstract public void Function();
 
 }
