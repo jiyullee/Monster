@@ -7,7 +7,7 @@ public class SightUpDown : MonoBehaviour
     int rotSpeed = 10;
     void Update()
     {
-       
+
         float MouseY = Input.GetAxis("Mouse Y");
         if (0.3f >= transform.localRotation.x && transform.localRotation.x >= -0.5f)
         {

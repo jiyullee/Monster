@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float stamina = 100;
+    public int armor = 0;
     public bool isShift = false;
     float increaseStamina = 1.0f;
     float decreaseStamina = 1.0f;

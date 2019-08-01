@@ -5,18 +5,21 @@ using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField] GameObject service;
+    GameObject service;
     GameObject player;
     public int distance;
     [SerializeField] int detectDist;
     [SerializeField] float attackDist;
     [SerializeField] NavMeshAgent nvAgent;
     public LayerMask playerLayerMask;
+    public float attackDelay;
     int rand;
+    bool attack = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        service = GameObject.FindGameObjectWithTag("Service");
         StartCoroutine(Roam());
         player = service.GetComponent<GameManager>().player;
         nvAgent = GetComponent<NavMeshAgent>();
@@ -35,10 +38,15 @@ public class Monster : MonoBehaviour
         if(distance <= detectDist && attackDist < distance)
         {
             GetComponent<Animator>().SetBool("Run", true);
+            GetComponent<Animator>().SetBool("Attack", false);
             nvAgent.destination = player.transform.position;
         }
         else if(distance <= attackDist)
         {
+            Vector3 dir = player.transform.position - transform.position;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 10);
+            GetComponent<Animator>().SetBool("Attack", true);
+            if(attack == false)
             StartCoroutine(Attack());
         }
         else if(distance > detectDist)
@@ -59,18 +67,30 @@ public class Monster : MonoBehaviour
 
     IEnumerator Attack()
     {
-        GetComponent<Animator>().SetBool("Attack", true);
-        Ray ray = new Ray(transform.position, Vector3.forward);
+        attack = true;
+        Ray ray = new Ray(transform.position + new Vector3(0, 1, 0), player.transform.position-transform.position);
         RaycastHit hit;
-        if(Physics.Raycast(transform.position,Vector3.forward,out hit, attackDist) && hit.collider.gameObject.tag == "Player")
+        Debug.DrawRay(ray.origin, ray.direction * attackDist, Color.red, 5f);
+
+        if (Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, attackDist) && hit.collider.gameObject.tag == "Player")
         {
-            service.GetComponent<GameManager>().GameOver();
+           
+            print("Hit");
+            if (player.GetComponent<PlayerHealth>().armor > 0)
+            {
+                player.GetComponent<PlayerHealth>().armor -= 1;
+            }
+            else if (player.GetComponent<PlayerHealth>().armor <= 0)
+            {
+                service.GetComponent<GameManager>().GameOver();
+            }
+            
         }
-        
 
-        yield return new WaitForSeconds(0.2f);
-        GetComponent<Animator>().SetBool("Attack", false);
-
+        nvAgent.speed = 0;
+        yield return new WaitForSeconds(attackDelay);
+        nvAgent.speed = 3.5f;
+        attack = false;
     }
     IEnumerator Roam()
     {
