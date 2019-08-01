@@ -6,6 +6,7 @@ public class UseItem : MonoBehaviour
 {
     public Sprite item;
     Sprite slotImage;
+    public int slotNo;
     public int itemNo;
     public int itemIndex;
     public GameObject uiItemImage;
@@ -18,11 +19,7 @@ public class UseItem : MonoBehaviour
         uiItemImage.SetActive(true);
         uiItemImage.GetComponent<Image>().sprite =item;
         uiItemImage.GetComponent<SetItem>().itemNo = itemNo;
-
+        uiItemImage.GetComponent<SetItem>().slotNo = slotNo;
     }
-   
-     
-
-
 
 }
