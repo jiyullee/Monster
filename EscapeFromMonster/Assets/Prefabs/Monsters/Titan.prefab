@@ -1610,7 +1610,7 @@ MonoBehaviour:
   nvAgent: {fileID: 0}
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   attackDelay: 2.2
 --- !u!65 &-8094539694230215527
 BoxCollider:
