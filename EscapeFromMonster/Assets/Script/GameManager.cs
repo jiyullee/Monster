@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        
+
     }
     public void GameOver()
     {

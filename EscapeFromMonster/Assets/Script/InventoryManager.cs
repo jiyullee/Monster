@@ -6,30 +6,52 @@ using Service;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
+    public GameObject item;
     public GameObject[] inGameSlot;
-    GameObject[] slot = new GameObject[9];
-    static int i = 0;
+    public List<int> slot1 = new List<int>();
+    static int ptr = 0;
     bool isFull = false;
-    public void InputItem(GameObject item)
+    private void Start()
     {
-        while (i < inGameSlot.Length && isFull == false)
+        for(int i = 0; i < inGameSlot.Length; i++)
         {
-            if (slot[i] == null)
+            slot1.Add(-1);
+        }
+    }
+    public void InputItem(Sprite itemImage, int no)
+    {
+        //처음 슬롯에 삽입
+        if (slot1 == null)
+        {
+            slot1[0] = no;
+            inGameSlot[ptr].GetComponent<UseItem>().item = itemImage;
+            inGameSlot[ptr].GetComponent<UseItem>().itemNo = slot1[ptr];
+            inGameSlot[ptr].GetComponent<UseItem>().itemIndex = ptr;
+            inGameSlot[ptr].GetComponent<Image>().sprite = itemImage;
+            ptr++;
+        }
+        else
+        {
+            while (ptr < inGameSlot.Length && !isFull)
             {
-                slot[i] = item;
-                inGameSlot[i].GetComponent<UseItem>().item = item;
-                inGameSlot[i].GetComponent<Image>().sprite = item.GetComponent<ItemManager>().itemImage;
-                break;
+                if (slot1[ptr] == -1)
+                {
+                    slot1[ptr] = no;
+                    inGameSlot[ptr].GetComponent<UseItem>().item = itemImage;
+                    inGameSlot[ptr].GetComponent<UseItem>().itemNo = slot1[ptr];
+                    inGameSlot[ptr].GetComponent<UseItem>().itemIndex = ptr;
+                    inGameSlot[ptr].GetComponent<Image>().sprite = itemImage;
+                    ptr++;
+                    break;
+                }
             }
-
-            i++;
-            
-        }
-        if (i == inGameSlot.Length)
-        {
-            isFull = true;
-        }
-            
-    }  
-    
+            if(ptr == inGameSlot.Length)
+            {
+                isFull = true;
+                ptr = 0;
+            }
+        }                               
+        
+    }
+ 
 }

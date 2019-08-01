@@ -4,19 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UseItem : MonoBehaviour
 {
-    public GameObject item;
+    public Sprite item;
     Sprite slotImage;
+    public int itemNo;
+    public int itemIndex;
+    public GameObject uiItemImage;
     private void Start()
     {
         slotImage = GetComponent<Image>().sprite;
     }
     public void Onclick()
     {
-        if(item != null)
-        {
-            item.GetComponent<ItemManager>().Function();
-            GetComponent<Image>().sprite = slotImage;
-        }
-              
+        uiItemImage.SetActive(true);
+        uiItemImage.GetComponent<Image>().sprite =item;
+        uiItemImage.GetComponent<SetItem>().itemNo = itemNo;
+
     }
+   
+     
+
+
+
 }

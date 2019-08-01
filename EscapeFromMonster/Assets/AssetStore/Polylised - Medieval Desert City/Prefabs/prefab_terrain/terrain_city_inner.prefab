@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4509780323381818}
   - component: {fileID: 33522431908732894}
   - component: {fileID: 23804647764631420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: terrain_city_inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
