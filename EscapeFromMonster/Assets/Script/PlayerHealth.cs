@@ -40,4 +40,9 @@ public class PlayerHealth : MonoBehaviour
             stamina = 0;
         yield return new WaitForSeconds(0.5f);
     }
+
+    public void IncreaseArmor()
+    {
+        armor++;
+    }
 }

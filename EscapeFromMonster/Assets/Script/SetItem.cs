@@ -23,6 +23,8 @@ public class SetItem : MonoBehaviour
                 temp.GetComponent<ItemManager>().Function();
                 InventoryManager.Instance.slot1[slotNo] = -1;
                 InventoryManager.Instance.inGameSlot[slotNo].GetComponent<Image>().sprite = slotImage;
+
+                Monster.Instance.noiseItemList.Add(temp);
                 gameObject.SetActive(false);
             }
         }

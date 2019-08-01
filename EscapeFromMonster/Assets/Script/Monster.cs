@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class Monster : MonoBehaviour
+using Service;
+public class Monster : Singleton<Monster>
 {
     GameObject service;
     GameObject player;
+    public List<GameObject> noiseItemList = new List<GameObject>();
     public int distance;
     [SerializeField] int detectDist;
     [SerializeField] float attackDist;
@@ -35,7 +36,18 @@ public class Monster : MonoBehaviour
 
         distance = (int)(Mathf.Sqrt((target_x - tr_x) * (target_x - tr_x) + (target_z - tr_z) * (target_z - tr_z)));
 
-        if(distance <= detectDist && attackDist < distance)
+        for(int i = 0; i < noiseItemList.Count; i++)
+        {
+            float itemTr_x = noiseItemList[i].transform.position.x;
+            float itemTr_z = noiseItemList[i].transform.position.z;
+            float itemDistance = Mathf.Sqrt((itemTr_x - tr_x) * (itemTr_x - tr_x) + (itemTr_z - tr_z) * (itemTr_z - tr_z));
+            if(itemDistance <= 30.0f)
+            {
+                nvAgent.destination = noiseItemList[i].transform.position;
+                goto end;
+            }
+        }
+        if (distance <= detectDist && attackDist < distance)
         {
             GetComponent<Animator>().SetBool("Run", true);
             GetComponent<Animator>().SetBool("Attack", false);
@@ -58,8 +70,8 @@ public class Monster : MonoBehaviour
             else if (rand == 1)
                 GetComponent<Animator>().SetBool("Walk", false);
         }
-        
-       
+    end:
+        { }
     }
     
 
