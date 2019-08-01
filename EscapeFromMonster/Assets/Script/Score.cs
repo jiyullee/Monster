@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     void Update()
     {
         int score = (int)GameManager.time;
-        int minute = (int)score / 60;
+        int minute = (int) score / 60;
         int sec = score % 60;
 
         GetComponent<Text>().text = "기록 : " + minute + "분 " + sec + "초";

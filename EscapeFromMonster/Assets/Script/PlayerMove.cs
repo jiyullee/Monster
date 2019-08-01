@@ -27,15 +27,23 @@ public class PlayerMove : MonoBehaviour
         float MouseX = Input.GetAxis("Mouse X");
         
         transform.Rotate(Vector3.up * rotSpeed * MouseX);
-
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            GetComponent<AudioSource>().enabled = true;
+        }
+        else
+        {
+            GetComponent<AudioSource>().enabled = false;
+        }
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+          
         }
-
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * sideSpeed * Time.deltaTime);
+
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -48,16 +56,19 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isBurnOut == false)
         {
             forwardSpeed = runSpeed;
+            GetComponent<AudioSource>().pitch = 2;
             GetComponent<PlayerHealth>().isShift = true;
         }
         else if(isBurnOut == false)
         {
             GetComponent<PlayerHealth>().isShift = false;
+            GetComponent<AudioSource>().pitch = 1;
             forwardSpeed = originForwardSpeed;
         }
         if (stamina == 0 && isBurnOut == false)
         {
             isBurnOut = true;
+            GetComponent<AudioSource>().pitch = 1;
             StartCoroutine(Burnout());
         }
         if (Input.GetKeyDown(KeyCode.F))

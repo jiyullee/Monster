@@ -571,7 +571,7 @@ MonoBehaviour:
   nvAgent: {fileID: 0}
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   attackDelay: 0.7
 --- !u!195 &-4275416771155307199
 NavMeshAgent:
