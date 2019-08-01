@@ -4,12 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Service
-<<<<<<< HEAD
   - Noise
-=======
-  - Terrain
->>>>>>> d91369a9bbb0bb15583ae68ecb0c7720e53fbfc1
   layers:
   - Default
   - TransparentFX
@@ -19,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - Terrain
-  - Player
+  - 
+  - 
   - 
   - 
   - 
