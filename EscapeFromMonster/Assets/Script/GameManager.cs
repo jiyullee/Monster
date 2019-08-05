@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
       player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(MakeDestination());
     }
 
     // Update is called once per frame

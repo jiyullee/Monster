@@ -30,7 +30,7 @@ public class Monster : Singleton<Monster>
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float tr_x = transform.position.x;
         float tr_z = transform.position.z;
