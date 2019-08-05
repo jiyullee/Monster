@@ -19,6 +19,6 @@ public class Score : MonoBehaviour
         int minute = (int) score / 60;
         int sec = score % 60;
 
-        GetComponent<Text>().text = "기록 : " + minute + "분 " + sec + "초";
+        GetComponent<Text>().text = "Record : " + minute + "Min " + sec + "Sec";
     }
 }
