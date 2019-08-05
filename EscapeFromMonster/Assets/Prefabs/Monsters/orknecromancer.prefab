@@ -4227,6 +4227,8 @@ GameObject:
   - component: {fileID: 2869427048938901745}
   - component: {fileID: 5115480529740721957}
   - component: {fileID: 7796807882015756653}
+  - component: {fileID: -7417059045195466347}
+  - component: {fileID: 465634411277832522}
   m_Layer: 0
   m_Name: orknecromancer
   m_TagString: Untagged
@@ -4243,7 +4245,7 @@ Transform:
   m_GameObject: {fileID: 2775807972475647325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.6016178, y: 0.000108003616, z: -2.71797}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2778725134068857303}
   - {fileID: 2779012930031720035}
@@ -4304,6 +4306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8a9d86b1650264ab92c35f056df158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noiseItemList: []
   distance: 0
   detectDist: 30
   attackDist: 3
@@ -4312,6 +4315,35 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackDelay: 2
+--- !u!54 &-7417059045195466347
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775807972475647325}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &465634411277832522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775807972475647325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.50413203, y: 2.3936749, z: 0.31319016}
+  m_Center: {x: 0.013451964, y: 0.6968374, z: -0.0332214}
 --- !u!1 &2775810647084941909
 GameObject:
   m_ObjectHideFlags: 0

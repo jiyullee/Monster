@@ -8,7 +8,11 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public float time;
     bool isGameOver = false;
+    int destinationWait = 40;
     [SerializeField] GameObject GameOverUI;
+    [SerializeField] GameObject GameCompleteUI;
+    [SerializeField] GameObject Destination;
+    [SerializeField] GameObject[] Destinations;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,12 @@ public class GameManager : MonoBehaviour
         
         }
     }
+    public void GameComplete()
+    {
+        Time.timeScale = 0;
+        GameCompleteUI.SetActive(true);
+
+    }
 
 
     public void BacktotheMainmenu()
@@ -42,5 +52,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("SampleScene");
+    }
+    IEnumerator MakeDestination()
+    {
+        yield return new WaitForSeconds(destinationWait);
+        Destination.SetActive(true);
+        Destinations[Random.Range(0, Destinations.Length)].SetActive(true);
     }
 }

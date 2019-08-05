@@ -16,6 +16,8 @@ public class Monster : Singleton<Monster>
     public float attackDelay;
     int rand;
     bool attack = false;
+    bool petrol = false;
+    Vector3 petrolPos;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class Monster : Singleton<Monster>
         StartCoroutine(Roam());
         player = service.GetComponent<GameManager>().player;
         nvAgent = GetComponent<NavMeshAgent>();
+        StartCoroutine(DestinationMaker());
     }
 
     // Update is called once per frame
@@ -64,11 +67,17 @@ public class Monster : Singleton<Monster>
         else if(distance > detectDist)
         {
             GetComponent<Animator>().SetBool("Run", false);
-            nvAgent.destination = transform.position;
+            
             if (rand == 0)
+            {
                 GetComponent<Animator>().SetBool("Walk", true);
+                nvAgent.destination = petrolPos;
+            }
             else if (rand == 1)
+            {
                 GetComponent<Animator>().SetBool("Walk", false);
+                nvAgent.destination = transform.position;
+            }
         }
     end:
         { }
@@ -110,6 +119,16 @@ public class Monster : Singleton<Monster>
         {
             int rand = Random.Range(0,1);
             yield return new WaitForSeconds(2);
+        }
+    }
+
+    IEnumerator DestinationMaker()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
+            petrolPos = transform.position + new Vector3(Random.Range(-70,70),0, Random.Range(-70, 70));
+
         }
     }
 }

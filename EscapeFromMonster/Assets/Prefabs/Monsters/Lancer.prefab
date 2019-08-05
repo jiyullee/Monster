@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: -781320667634788122}
   - component: {fileID: 8603850938096998197}
   - component: {fileID: 5265088359613946472}
+  - component: {fileID: -541661230794738572}
   m_Layer: 0
   m_Name: Lancer
   m_TagString: Untagged
@@ -227,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8a9d86b1650264ab92c35f056df158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noiseItemList: []
   distance: 0
   detectDist: 30
   attackDist: 3
@@ -270,6 +272,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.553405, z: 1}
   m_Center: {x: 0, y: 0.7767025, z: 0}
+--- !u!54 &-541661230794738572
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107140}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &108726
 GameObject:
   m_ObjectHideFlags: 0
