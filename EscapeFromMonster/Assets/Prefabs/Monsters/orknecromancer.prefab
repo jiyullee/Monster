@@ -4228,7 +4228,7 @@ GameObject:
   - component: {fileID: 5115480529740721957}
   - component: {fileID: 7796807882015756653}
   - component: {fileID: -7417059045195466347}
-  - component: {fileID: 465634411277832522}
+  - component: {fileID: 3057867167843358868}
   m_Layer: 0
   m_Name: orknecromancer
   m_TagString: Untagged
@@ -4285,7 +4285,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -4331,8 +4331,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &465634411277832522
-BoxCollider:
+--- !u!136 &3057867167843358868
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4341,9 +4341,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.50413203, y: 2.3936749, z: 0.31319016}
-  m_Center: {x: 0.013451964, y: 0.6968374, z: -0.0332214}
+  m_Radius: 0.36482608
+  m_Height: 1.9767298
+  m_Direction: 1
+  m_Center: {x: -0.00064019364, y: 0.90301865, z: 0}
 --- !u!1 &2775810647084941909
 GameObject:
   m_ObjectHideFlags: 0
