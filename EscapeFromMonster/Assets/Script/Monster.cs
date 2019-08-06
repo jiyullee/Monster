@@ -30,7 +30,7 @@ public class Monster : Singleton<Monster>
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float tr_x = transform.position.x;
         float tr_z = transform.position.z;
@@ -38,16 +38,15 @@ public class Monster : Singleton<Monster>
         float target_z = player.transform.position.z;
 
         distance = (int)(Mathf.Sqrt((target_x - tr_x) * (target_x - tr_x) + (target_z - tr_z) * (target_z - tr_z)));
-
         for(int i = 0; i < noiseItemList.Count; i++)
         {
             float itemTr_x = noiseItemList[i].transform.position.x;
             float itemTr_z = noiseItemList[i].transform.position.z;
             float itemDistance = Mathf.Sqrt((itemTr_x - tr_x) * (itemTr_x - tr_x) + (itemTr_z - tr_z) * (itemTr_z - tr_z));
-            if(itemDistance <= 30.0f)
+            if(itemDistance <= 100.0f)
             {
                 nvAgent.destination = noiseItemList[i].transform.position;
-                goto end;
+                return;
             }
         }
         if (distance <= detectDist && attackDist < distance)
@@ -79,8 +78,7 @@ public class Monster : Singleton<Monster>
                 nvAgent.destination = transform.position;
             }
         }
-    end:
-        { }
+    
     }
     
 

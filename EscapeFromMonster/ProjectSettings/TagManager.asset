@@ -5,6 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - Noise
+  - Slot
+  - Slots
+  - Hotbar
+  - CraftSystem
+  - ResultSlot
+  - DraggingItem
+  - Tooltip
+  - EventSystem
+  - ItemIcon
+  - Item
+  - Canvas
+  - Panel
+  - EquipmentSystem
+  - Service
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -14,7 +29,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Terrain
   - 
   - 
   - 
