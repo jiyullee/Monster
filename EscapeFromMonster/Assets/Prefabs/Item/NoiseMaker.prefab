@@ -125,7 +125,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 0}
-  isPlaying: 0
+  monsters:
+  - {fileID: 1657578995823612833, guid: 3458bd12914b1734d84ffe7473162d2e, type: 3}
+  - {fileID: 2775807972475647325, guid: 72aab3f33d029894096529db4aa7deb9, type: 3}
+  - {fileID: 8152419611553968226, guid: cd31d2281a4236147bf5e2a048de2254, type: 3}
+  - {fileID: 1399230512357692668, guid: 2c905e2ba373fae42b43aafd218ec8b7, type: 3}
 --- !u!82 &-2261192156865587624
 AudioSource:
   m_ObjectHideFlags: 0
