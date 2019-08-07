@@ -25,6 +25,6 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = "Record : " + minute + "Min " + sec + "Sec";
+        GetComponent<Text>().text = "Record : " + minute + " Min " + sec + " Sec";
     }
 }

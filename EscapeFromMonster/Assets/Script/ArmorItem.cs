@@ -12,16 +12,6 @@ public class ArmorItem : ItemManager
     public override void Function()
     {
         player.GetComponent<PlayerHealth>().IncreaseArmor();
-        print(1);
-
     }
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            Function();
-            Destroy(gameObject);
-        }
-    }
 }
