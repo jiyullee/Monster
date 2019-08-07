@@ -18,6 +18,7 @@ public class Monster : Singleton<Monster>
     bool attack = false;
     bool petrol = false;
     Vector3 petrolPos;
+    float originSpeed;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Monster : Singleton<Monster>
         player = service.GetComponent<GameManager>().player;
         nvAgent = GetComponent<NavMeshAgent>();
         StartCoroutine(DestinationMaker());
+        originSpeed = nvAgent.speed;
     }
 
     // Update is called once per frame
@@ -39,12 +41,12 @@ public class Monster : Singleton<Monster>
 
         distance = (int)(Mathf.Sqrt((target_x - tr_x) * (target_x - tr_x) + (target_z - tr_z) * (target_z - tr_z)));
 
-        for(int i = 0; i < noiseItemList.Count; i++)
+        for (int i = 0; i < noiseItemList.Count; i++)
         {
             float itemTr_x = noiseItemList[i].transform.position.x;
             float itemTr_z = noiseItemList[i].transform.position.z;
             float itemDistance = Mathf.Sqrt((itemTr_x - tr_x) * (itemTr_x - tr_x) + (itemTr_z - tr_z) * (itemTr_z - tr_z));
-            if(itemDistance <= 30.0f)
+            if (itemDistance <= 30.0f)
             {
                 nvAgent.destination = noiseItemList[i].transform.position;
                 goto end;
@@ -55,6 +57,7 @@ public class Monster : Singleton<Monster>
             GetComponent<Animator>().SetBool("Run", true);
             GetComponent<Animator>().SetBool("Attack", false);
             nvAgent.destination = player.transform.position;
+            nvAgent.speed = originSpeed;
         }
         else if(distance <= attackDist)
         {
@@ -64,22 +67,23 @@ public class Monster : Singleton<Monster>
             if(attack == false)
             StartCoroutine(Attack());
         }
-        else if(distance > detectDist)
+        else if (distance > detectDist)
         {
             GetComponent<Animator>().SetBool("Run", false);
-            
+
             if (rand == 0)
             {
                 GetComponent<Animator>().SetBool("Walk", true);
-                nvAgent.destination = petrolPos;
+                nvAgent.speed = 0;
+
             }
             else if (rand == 1)
             {
                 GetComponent<Animator>().SetBool("Walk", false);
-                nvAgent.destination = transform.position;
+                nvAgent.speed = 0;
             }
         }
-    end:
+        end:
         { }
     }
     
