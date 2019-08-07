@@ -6,6 +6,7 @@ public class NoiseMaker : ItemManager
 {
     float delay = 3.0f;
     GameObject player;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -30,8 +31,8 @@ public class NoiseMaker : ItemManager
 
         GetComponent<AudioSource>().volume = 1 / diff;
     }
-
-    private void OnDisable()
+ 
+    private void OnDestroy()
     {
         Monster.Instance.noiseItemList.Remove(gameObject);
     }

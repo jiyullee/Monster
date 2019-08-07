@@ -12,6 +12,7 @@ public class Slot : MonoBehaviour
     public bool isPicked = false;
     public Sprite slotImage;
     public GameObject centerImage;
+
     private void Update()
     {
         if (isFull)
@@ -22,11 +23,15 @@ public class Slot : MonoBehaviour
         {
             GetComponent<Image>().sprite = slotImage;
         }
+
         if (Input.GetKey(KeyCode.R) && isFull && isPicked)
         {
             centerImage.gameObject.SetActive(false);
             RaycastHit raycastHit = Camera.main.GetComponent<RayCast>().raycastHit;
             Monster.Instance.noiseItemList.Add(Instantiate(noiseMaker, raycastHit.point, transform.rotation));
+            
+            
+
             isEmpty = true;
             isFull = false;
             isPicked = false;
